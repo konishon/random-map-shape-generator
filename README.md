@@ -4,6 +4,8 @@
 
 A web app that randomly generates shapes (points, lines, polygons) on a map using [Leaflet.js](https://leafletjs.com/). Features layer switching, search, and shape downloads in ZIP format. 
 
+> You can use the tool on https://konishon.github.io/random-map-shape-generator/
+
 ## Features
 
 - Random shape generation: points, lines, polygons
