@@ -1,0 +1,150 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    height: 100vh;
+}
+
+#zoom-level {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: all 0.3s;
+}
+
+#zoom-level:hover {
+    transform: scale(1.05);
+}
+
+#context-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+#context-menu button {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#context-menu button:hover {
+    background-color: #eee;
+}
+
+label {
+    display: block;
+    margin: 5px;
+    text-align: left;
+}
+
+html, body {
+    margin: 0;  
+    padding: 0; 
+    height: 100%; 
+}
+
+#map {
+    height: 100vh; 
+    width: 100%;   
+}
+#context-menu {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    z-index: 1000;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+/* Default footer styles */
+footer {
+    position: absolute;
+    bottom: 10px;  
+    left: 50%;    
+    transform: translateX(-50%);  
+    z-index: 1000;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    width: 55.5%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap; /* Wrap buttons for larger screens */
+    justify-content: center;
+}
+footer button {
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 14px;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    footer {
+        width: 100%; /* Make the footer take full width */
+        left: 0;
+        bottom: 0;
+        transform: none;
+        padding: 10px;
+        box-shadow: none;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto; /* Allow horizontal scrolling */
+        white-space: nowrap; /* Prevent line breaks */
+    }
+
+    footer button {
+        flex-shrink: 0; /* Prevent buttons from shrinking */
+        margin: 0 5px; /* Adjust button margins */
+    }
+}
+
+.leaflet-control-geocoder {
+    font-size: 14px;
+    width: 250px;
+    border: 1px solid red; 
+}
+.download-zip-btn {
+    background-color: #4CAF50; 
+    color: white; 
+    font-weight: bold; 
+    padding: 15px 25px; 
+    font-size: 16px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.download-zip-btn:hover {
+    background-color: #45a049; 
+    transform: scale(1.05); 
+}
+
+.download-zip-btn:active {
+    background-color: #3e8e41; 
+    transform: scale(0.98); 
+}
+

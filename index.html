@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shapes on Map</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shapes on Map | Draw, Customize, and Download</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Interactive tool to draw random shapes like stars, hearts, and more on a map. Download your customized shapes as GeoJSON or ZIP.">
+    <meta name="keywords" content="shapes, maps, Leaflet, draw shapes, GeoJSON, shapes on map, download map shapes, zip download, heart, star, butterfly">
+    <meta name="author" content="Nishon Tandukar">
+    
+    <!-- Other Meta Tags -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Open Graph Meta Tags for Share Previews (Facebook, LinkedIn) -->
+    <meta property="og:title" content="Shapes on Map | Interactive Map Shape Drawer">
+    <meta property="og:description" content="Draw, customize, and download shapes like stars and hearts directly on a map! Export them as GeoJSON or ZIP files.">
+    <meta property="og:image" content="/public/share-preview.jpg"> 
+    <meta property="og:url" content="https://naxa.com.np/random">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags for Share Previews (Twitter) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shapes on Map | Interactive Shape Drawer">
+    <meta name="twitter:description" content="Draw shapes like stars, hearts, and more on maps, then download them as GeoJSON or ZIP files.">
+    <meta name="twitter:image" content="/public/share-preview.jpg"> 
+    <meta name="twitter:site" content="@naxanp">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />   
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+
+    <div id="map"></div>
+    
+    <div id="context-menu">
+        <button onclick="dropRandomShapeAtClickedLatLng()">🎲 Drop Random Shape</button>
+        <button onclick="drawRandomPoint()">📍 Random Point</button>
+        <button onclick="drawRandomLine()">📏 Random Line</button>
+        <button onclick="drawRandomPolygon()">🔺 Random Polygon</button>
+        <!-- Placeholder for the "Remove Layer" button -->
+        <button id="remove-layer-btn" style="display: none;" onclick="removeLayer()">❌ Remove this shape</button>
+
+    </div>
+    
+    <footer>
+        <button onclick="dropRandomShapeAtCenter()">🎲 Drop Random Shape</button>
+        <button onclick="drawRandomPoint()">📍 Random Point</button>
+        <button onclick="drawRandomLine()">📏 Random Line</button>
+        <button onclick="drawRandomPolygon()">🔺 Random Polygon</button>
+        <button class="download-zip-btn" onclick="downloadShapesAsZip()">Download Shapes</button>
+        <button onclick="clearMap()">❌ Clear All Shapes</button>
+
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>  
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>

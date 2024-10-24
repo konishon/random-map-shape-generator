@@ -1,0 +1,30 @@
+
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Git specific files
+.git/
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+
+# Ignore build artifacts
+dist/
+build/
+
+# Miscellaneous
+.env
