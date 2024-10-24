@@ -6,6 +6,9 @@ A web app that randomly generates shapes (points, lines, polygons) on a map usin
 
 > You can use the tool on https://konishon.github.io/random-map-shape-generator/
 
+![share-preview](https://github.com/user-attachments/assets/6d7d492b-5e18-4e69-aa2c-b348818e7ffa)
+
+
 ## Features
 
 - Random shape generation: points, lines, polygons
