@@ -135,6 +135,19 @@ function dropRandomShapeAtCenter() {
     dropShape(shape, lat, lon);
 }
 
+function dropRandomShapeInVisibleRegion() {
+    const shape = getRandomShape();
+    const bounds = map.getBounds(); // Get the visible map bounds
+    const southWest = bounds.getSouthWest();
+    const northEast = bounds.getNorthEast();
+
+    const lat = Math.random() * (northEast.lat - southWest.lat) + southWest.lat;
+    const lon = Math.random() * (northEast.lng - southWest.lng) + southWest.lng;
+
+    dropShape(shape, lat, lon);
+}
+
+
 function dropRandomShapeAtClickedLatLng() {
     const shape = getRandomShape();  // Pick a random shape
     const lat = parseFloat(contextMenu.getAttribute('data-lat'));
@@ -229,8 +242,8 @@ function dropHeart(lat, lon) {
 
 function generateStarCoordinates(centerLat, centerLon, zoomScale) {
     const points = 5;
-    const radiusOuter = 0.005 * zoomScale; // Scaled outer radius
-    const radiusInner = 0.002 * zoomScale; // Scaled inner radius
+    const radiusOuter = 0.01 * zoomScale;
+    const radiusInner = 0.004 * zoomScale;
     const angle = Math.PI / points;
 
     let coords = [];
@@ -245,14 +258,15 @@ function generateStarCoordinates(centerLat, centerLon, zoomScale) {
 
 function dropStar(lat, lon) {
     const zoomLevel = map.getZoom();
-    const baseScale = 0.001;
-    const zoomScale = baseScale * Math.pow(2, 15 - zoomLevel); // Scale based on zoom level
+    const baseScale = 0.0008; 
+    const zoomScale = Math.max(baseScale * Math.pow(2, 13 - zoomLevel), baseScale * 2); 
 
     const starCoords = generateStarCoordinates(lat, lon, zoomScale);
     L.polygon(starCoords, { color: 'yellow', fillOpacity: 0.5 }).addTo(map);
     
     storeShapeAsGeoJson('star', starCoords);
 }
+
 
 
 function generateFlowerCoordinates(centerLat, centerLon, zoomScale) {
