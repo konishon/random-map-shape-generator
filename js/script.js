@@ -257,8 +257,8 @@ function dropStar(lat, lon) {
 
 function generateFlowerCoordinates(centerLat, centerLon, zoomScale) {
     const petals = 8;
-    const baseScale = 0.002;
-    const scale = baseScale * zoomScale; // Scale adjusted based on the zoom level
+    const baseScale = 0.1;
+    const scale = baseScale * zoomScale;
 
     const coords = [];
     for (let t = 0; t <= 2 * Math.PI; t += 0.01) {
@@ -272,18 +272,22 @@ function generateFlowerCoordinates(centerLat, centerLon, zoomScale) {
 
 function dropFlower(lat, lon) {
     const zoomLevel = map.getZoom();
-    const baseScale = 0.001;
-    const zoomScale = baseScale * Math.pow(2, 15 - zoomLevel); // Adjust scale according to zoom
+    const baseScale = 0.05;
+    const zoomScale = 0.0005 * Math.pow(2, 20 - zoomLevel);
 
     const flowerCoords = generateFlowerCoordinates(lat, lon, zoomScale);
-    L.polygon(flowerCoords, { color: 'pink', fillOpacity: 0.5 }).addTo(map);
+    const flowerShape = L.polygon(flowerCoords, { color: 'pink', fillOpacity: 0.5 }).addTo(map);
+
+    flowerShape.enableEdit(map);
 
     storeShapeAsGeoJson('flower', flowerCoords);
 }
 
 
-function generateButterflyCoordinates(centerLat, centerLon) {
-    const scale = 0.002;
+
+function generateButterflyCoordinates(centerLat, centerLon, zoomScale) {
+    const baseScale = 0.1; // Increase base scale for better visibility
+    const scale = baseScale * zoomScale; // Apply zoom scaling
 
     const coords = [];
     for (let t = 0; t <= 2 * Math.PI; t += 0.01) {
@@ -295,12 +299,18 @@ function generateButterflyCoordinates(centerLat, centerLon) {
 }
 
 function dropButterfly(lat, lon) {
-    const butterflyCoords = generateButterflyCoordinates(lat, lon);
-    L.polygon(butterflyCoords, { color: 'purple', fillOpacity: 0.5 }).addTo(map);
-    //map.fitBounds([[lat, lon], ...butterflyCoords]);
+    const zoomLevel = map.getZoom();
+    const baseScale = 0.05; // Adjust base scale for proper sizing
+    const zoomScale = 0.0005 * Math.pow(2, 20 - zoomLevel); // Adjust scaling to make it visible at all zoom levels
+
+    const butterflyCoords = generateButterflyCoordinates(lat, lon, zoomScale);
+    const butterflyShape = L.polygon(butterflyCoords, { color: 'purple', fillOpacity: 0.5 }).addTo(map);
+
+    butterflyShape.enableEdit(map);
 
     storeShapeAsGeoJson('butterfly', butterflyCoords);
 }
+
 
 function generateSpiralCoordinates(centerLat, centerLon) {
     const turns = 4;
@@ -324,10 +334,12 @@ function dropSpiral(lat, lon) {
     storeShapeAsGeoJson('spiral', spiralCoords);
 }
 
-function generateStarburstCoordinates(centerLat, centerLon) {
+function generateStarburstCoordinates(centerLat, centerLon, zoomScale) {
     const rays = 16;
-    const radiusOuter = 0.005;
-    const radiusInner = 0.001;
+    const baseRadiusOuter = 0.1;
+    const baseRadiusInner = 0.05;
+    const radiusOuter = baseRadiusOuter * zoomScale;
+    const radiusInner = baseRadiusInner * zoomScale;
     const angle = Math.PI / rays;
 
     let coords = [];
@@ -341,12 +353,18 @@ function generateStarburstCoordinates(centerLat, centerLon) {
 }
 
 function dropStarburst(lat, lon) {
-    const starburstCoords = generateStarburstCoordinates(lat, lon);
-    L.polygon(starburstCoords, { color: 'orange', fillOpacity: 0.5 }).addTo(map);
-    //map.fitBounds([[lat, lon], ...starburstCoords]);
+    const zoomLevel = map.getZoom();
+    const baseScale = 0.0005;
+    const zoomScale = baseScale * Math.pow(2, 20 - zoomLevel);
+
+    const starburstCoords = generateStarburstCoordinates(lat, lon, zoomScale);
+    const starburstShape = L.polygon(starburstCoords, { color: 'orange', fillOpacity: 0.5 }).addTo(map);
+    
+    starburstShape.enableEdit(map);
 
     storeShapeAsGeoJson('starburst', starburstCoords);
 }
+
 
 function getRandomLatLng() {
     const bounds = map.getBounds(); // Get the current map bounds
